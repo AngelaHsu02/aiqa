@@ -55,4 +55,5 @@ def reset_project():
     st.session_state.last_project_type = None
     st.session_state.step = 0
     st.session_state.stt_done = False
+    st.session_state.stt_btn_disabled = False
     st.session_state.audio_upload_key = f"audio_upload_{time.time()}"

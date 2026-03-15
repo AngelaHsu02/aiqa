@@ -14,7 +14,7 @@ BASE_DIR = _os.path.dirname(_APP_DIR)
 # 確保專案根目錄在 sys.path，讓 `from app.xxx import` 可以找到
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
-_log_dir = _os.path.join(BASE_DIR, "terminal_logs")
+_log_dir = _os.path.join(BASE_DIR, "logs")
 _os.makedirs(_log_dir, exist_ok=True)
 
 logging.basicConfig(
@@ -847,12 +847,13 @@ if st.session_state.project_type == "開新專案":
                             msg_ph.warning(f"⚠️ 無法寫入 meta.json：{e}")
                             
                         # (3) 清空 session 旗標選擇
-                        for k in ["audio_file_paths", 
+                        for k in ["audio_file_paths",
                                   "audio_file_names",
                                   "stt_done",
                                   "step1_success_msg_clone"
                                   ]:
                             st.session_state.pop(k, None)
+                        st.session_state.stt_btn_disabled = False
                         # 清 clone 暫存
                         st.session_state.clone_initialized = False
                         st.session_state.clone_file_objs = []
@@ -1326,7 +1327,7 @@ if st.session_state.project_type == "開新專案":
             if st.session_state["is_clone"]:
                 # 1. file_uploader 顯示上傳區
                 # st.info("🟢 **關鍵字檔案 `keywords`**　｜　必要工作表：`必有`、`禁止`", icon="ℹ️")
-                _kw_sample_path = os.path.join(BASE_DIR, "assets", "keywords_sample.xlsx")
+                _kw_sample_path = os.path.join(BASE_DIR, "templates", "keywords_sample.xlsx")
                 _kw_text = "請上傳關鍵字 keywords（僅支援 EXCEL，上限 200MB）"
                 try:
                     with open(_kw_sample_path, "rb") as _f:
@@ -1442,7 +1443,7 @@ if st.session_state.project_type == "開新專案":
             else:  # not is_clone
                 # 1. 顯示上傳器
                 # st.info("🟢 **關鍵字檔案 `keywords`**　｜　必要工作表：`必有`、`禁止`", icon="ℹ️")
-                _kw_sample_path = os.path.join(BASE_DIR, "assets", "keywords_sample.xlsx")
+                _kw_sample_path = os.path.join(BASE_DIR, "templates", "keywords_sample.xlsx")
                 _kw_text = "請上傳關鍵字 keywords（僅支援 EXCEL，上限 200MB）"
                 try:
                     with open(_kw_sample_path, "rb") as _f:
@@ -2048,7 +2049,7 @@ if st.session_state.project_type == "開新專案":
                     return '<span style="color:red; font-size:12px; margin-left:10px;">(未找到範例檔)</span>'
 
             # ── 藍色區塊：audio_item ──
-            audio_sample_path = os.path.join(BASE_DIR, "assets", "audioitem_sample.xlsx")
+            audio_sample_path = os.path.join(BASE_DIR, "templates", "audioitem_sample.xlsx")
             audio_text = f"請上傳音檔項目 audioitem（支援 EXCEL, CSV，上限 200MB）"
             st.markdown(f'<span style="font-size: 14px;">{audio_text}{get_download_link(audio_sample_path, "audioitem_sample.xlsx")}</span>', unsafe_allow_html=True)
             
@@ -2066,7 +2067,7 @@ if st.session_state.project_type == "開新專案":
                     st.error(_msg)
 
             # ── 橘色區塊：questionset ──
-            qs_sample_path = os.path.join(BASE_DIR, "assets", "questionset_sample.xlsx")
+            qs_sample_path = os.path.join(BASE_DIR, "templates", "questionset_sample.xlsx")
             qs_text = f"請上傳題組 questionset（僅支援 EXCEL，上限 200MB）"
             st.markdown(f'<span style="font-size: 14px;">{qs_text}{get_download_link(qs_sample_path, "questionset_sample.xlsx")}</span>', unsafe_allow_html=True)
             

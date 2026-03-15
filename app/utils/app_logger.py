@@ -30,7 +30,7 @@ from logging.handlers import TimedRotatingFileHandler
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 _APP_DIR  = os.path.dirname(_THIS_DIR)
 BASE_DIR  = os.path.dirname(_APP_DIR)
-_LOG_DIR  = os.path.join(BASE_DIR, "terminal_logs")
+_LOG_DIR  = os.path.join(BASE_DIR, "logs")
 _LOG_FILE = os.path.join(_LOG_DIR, "app.log")
 _LOG_FORMAT = "%(asctime)s [%(levelname)-5s] [%(user)s@%(ip)s] %(message)s"
 _DATE_FORMAT = "%Y-%m-%d %H:%M:%S"

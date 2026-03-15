@@ -5,7 +5,7 @@ import streamlit as st
 # load_history.py is at app/utils/load_history.py
 # go up 3 levels to reach project root
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-_DEFAULT_LOGS_DIR = os.path.join(os.path.dirname(os.path.dirname(_THIS_DIR)), "data", "project_data")
+_DEFAULT_LOGS_DIR = os.path.join(os.path.dirname(os.path.dirname(_THIS_DIR)), "data")
 
 UNIT_CODE_TO_NAME = {
     "1": "服務中心",

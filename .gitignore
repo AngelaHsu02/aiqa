@@ -5,7 +5,7 @@ __pycache__/
 *.pyo
 .venv/
 venv/
-vendor/
+logs/
 terminal_logs/
 .claude/
-assets/
+project_data/

@@ -9,7 +9,7 @@ import subprocess
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 _APP_DIR  = os.path.dirname(_THIS_DIR)
 BASE_DIR  = os.path.dirname(_APP_DIR)
-PROJECT_LOG_DIR = os.path.join(BASE_DIR, "data", "project_data")
+PROJECT_LOG_DIR = os.path.join(BASE_DIR, "data")
 
 # 建立受理編號專案資料夾（若尚未存在）
 def init_project_log_folder(acceptance_id):
