@@ -37,9 +37,8 @@ def local_path_to_http_url(path) -> str: # # 只回傳純 URL
     # File server 從專案根目錄 (BASE_DIR) serve，相對路徑必須從根目錄算
     _this = os.path.dirname(os.path.abspath(__file__))
     BASE_DIR = os.path.dirname(os.path.dirname(_this))
-    hostname = socket.gethostname()
-    local_ip = socket.gethostbyname(hostname)
-    base_url = f"http://{local_ip}:8503"
+    host = os.environ.get("SERVER_HOST") or socket.gethostbyname(socket.gethostname())
+    base_url = f"http://{host}:8503"
     rel_path = os.path.relpath(path, start=BASE_DIR)
     rel_path = rel_path.replace("\\", "/")
     rel_path = urllib.parse.quote(rel_path)
