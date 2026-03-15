@@ -15,3 +15,6 @@ librosa==0.10.2
 soundfile==0.12.1
 noisereduce==3.0.2
 opencc-python-reimplemented==0.1.7
+httpx
+openai
+google-generativeai
