@@ -38,10 +38,10 @@ def popen(cmd, cwd=None):
     return subprocess.Popen(cmd, cwd=cwd, shell=True, creationflags=flags)
 
 def run_file_server():
-    return popen("python -m http.server 8503", cwd=BASE_DIR) #CLI (python -m ... 或 streamlit run ...)
+    return popen(f"{sys.executable} -m http.server 8503", cwd=BASE_DIR)
 
 def run_api():
-    return popen("python -m uvicorn app.api.server:app --host 0.0.0.0 --port 8505", cwd=BASE_DIR)
+    return popen(f"{sys.executable} -m uvicorn app.api.server:app --host 0.0.0.0 --port 8505", cwd=BASE_DIR)
 
 def run_streamlit():
     return popen("streamlit run app/ui/web.py --server.port 8501", cwd=BASE_DIR)
