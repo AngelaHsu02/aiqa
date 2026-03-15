@@ -18,7 +18,7 @@ _log_dir = _os.path.join(BASE_DIR, "logs")
 _os.makedirs(_log_dir, exist_ok=True)
 
 logging.basicConfig(
-    filename=rf"{_log_dir}\terminal.log",
+    filename=_os.path.join(_log_dir, "terminal.log"),
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
     encoding="utf-8",
